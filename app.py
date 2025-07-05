@@ -5,14 +5,14 @@ from sentence_transformers import SentenceTransformer, util
 BAAIModel = SentenceTransformer("BAAI/bge-large-en-v1.5")
 allMiniModel = SentenceTransformer("all-MiniLM-L6-v2")
 
-class TextInput(BaseModel):
+class SimilarityInput(BaseModel):
     resume: str
     job_description: str
 
 app = FastAPI()
 
 @app.post("/calculate_similarity/")
-async def calculate_similarity(input_data: TextInput):
+async def calculate_similarity(input_data: SimilarityInput):
     print(input_data.resume,input_data.job_description)
 
     # encode both texts to get their embeddings
